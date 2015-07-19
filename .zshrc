@@ -4,10 +4,10 @@
 autoload colors
 colors
 
-PROMPT="%{${fg[blue]}%}[%n@%m] %(!.#.$) %{${reset_color}%}"
+PROMPT="%{${fg[yellow]}%}[%n@%m] %{${fg[green]}%}%(!.#.$) %{${reset_color}%}"
 PROMPT2="%{${fg[blue]}%}%_> %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
-RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+RPROMPT="%{${fg[yellow]}%}[%~]%{${reset_color}%}"
 
 # エイリアス
 alias ls="ls -F --color"
@@ -44,7 +44,8 @@ function search() {
 }
 
 # 環境変数
-export PATH=$PATH:/usr/lib/postgresql/8.3/bin:$HOME/bin
+export M3_HOME=/usr/local/lib/apache-maven-3.2.3
+export PATH=$PATH:/usr/lib/postgresql/8.3/bin:$HOME/bin:$M3_HOME/bin
 export EDITOR=emacsclient
 export VISUAL=emacsclient
 
@@ -82,7 +83,12 @@ compinit
 
 # rvm
 if [[ -s $HOME/.rvm/scripts/rvm ]] ; then source $HOME/.rvm/scripts/rvm ; fi
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# nvm
+if [[ -s ~/.nvm/nvm.sh ]];
+ then source ~/.nvm/nvm.sh
+fi
 
 #############################################################################
 ##
